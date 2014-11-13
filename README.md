@@ -1,4 +1,9 @@
 dotfiles
 ========
 
-Dotfiles for just emacs right now.  Planning to expand to xmonad and .bashrc
+My personal dotfiles.  Install:
+
+        git clone https://github.com/panicnot42/dotfiles.git
+	dotfiles/install.sh
+
+Then watch this while it runs: http://gfycat.com/IncomparableHatefulHind
