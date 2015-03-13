@@ -1,0 +1,88 @@
+alignment top_left
+background yes
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont DejaVu Sans Mono:size=12
+gap_x 5
+gap_y 0
+minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window no
+own_window_class Conky
+own_window_transparent no
+own_window_type desktop
+double_buffer yes
+
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+use_spacer left
+pad_percents 2
+
+TEXT
+${color green}${font sans-serif:bold:size=8:}SYSTEM${hr 2}
+${font sans-serif:normal:size=8:}$sysname $kernel $alignr $machine
+${color grey}Hostname:$alignr$color $nodename
+${color grey}Uptime:$alignr$color $uptime
+${color black}${loadgraph 000000 00FF00}
+${color green}${font sans-serif:bold:size=8:}PROCESSORS${hr 2}${font sans-serif:normal:size=8:}
+${cpugraph}
+${color grey}Frequency:$alignr$color ${freq_g}GHz
+${color grey}CPU0: ${cpu cpu1}% $color${cpubar cpu1}
+${color grey}CPU1: ${cpu cpu2}% $color${cpubar cpu2}
+${color grey}CPU2: ${cpu cpu3}% $color${cpubar cpu3}
+${color grey}CPU3: ${cpu cpu4}% $color${cpubar cpu4}
+${color grey}CPU4: ${cpu cpu5}% $color${cpubar cpu5}
+${color grey}CPU5: ${cpu cpu6}% $color${cpubar cpu6}
+${color grey}CPU6: ${cpu cpu7}% $color${cpubar cpu7}
+${color grey}CPU7: ${cpu cpu8}% $color${cpubar cpu8}
+${color green}${font sans-serif:bold:size=8:}COOLING${hr 2}${font sans-serif:normal:size=8:}
+#${color grey}CPU Temp: $color$alignr${hwmon 3 temp 1}°C
+#${color grey}GPU temp: $color$alignr${execi 1 aticonfig --adapter=0 --od-gettemperature | tail -n1 | gawk '{ printf $5 }' | cut -d. -f1 }°C
+#${color grey}FAN0 Speed: $color$alignr${hwmon 3 fan 1} RPM
+#${color grey}FAN1 Speed: $color$alignr${hwmon 3 fan 2} RPM
+#${color grey}FAN2 Speed: $color$alignr${hwmon 3 fan 3} RPM
+${color green}${font sans-serif:bold:size=8:}MEMORY${hr 2}${font sans-serif:normal:size=8:}
+${color grey}RAM Usage:$color $mem/$memmax $alignr$memperc%
+${membar 4}
+${color grey}Swap Usage:$color $swap/$swapmax $alignr$swapperc%
+${swapbar 4}
+${color green}${font sans-serif:bold:size=8:}FILESYSTEMS${hr 2}${font sans-serif:normal:size=8:}$color
+/ $alignr$color${fs_used /}/${fs_size /}
+${fs_bar 6 /}
+/home $alignr$color${fs_used /home}/${fs_size /home}
+${fs_bar 6 /home}
+/usr $alignr$color${fs_used /usr}/${fs_size /usr}
+${fs_bar 6 /usr}
+/mnt/acl $alignr$color${fs_used /mnt/acl}/${fs_size /mnt/acl}
+${fs_bar 6 /mnt/acl}
+${color}HDD (R/W)
+${color green}${diskiograph_read /dev/sda 25,90% 000000 00FF00 -t -l}$alignr${diskiograph_write /dev/sda 25,90% 000000 00FF00 -t -l}
+${color}SSD (R/W)
+${color green}${diskiograph_read /dev/sdb 25,90% 000000 00FF00 -t -l}$alignr${diskiograph_write /dev/sdb 25,90% 000000 00FF00 -t -l}
+${color green}${font sans-serif:bold:size=8:}NETWORKING${hr 2}${font sans-serif:normal:size=8:}
+${color grey}IP: $alignr$color${addr enp2s0}
+${color grey}Downlink
+${color green}${downspeedgraph enp2s0}
+$color${downspeed enp2s0}/s $alignr ${totaldown enp2s0}
+${color grey}Uplink
+${color green}${upspeedgraph enp2s0}
+$color${upspeed enp2s0}/s $alignr ${totalup enp2s0}
+${color green}${font sans-serif:bold:size=8:}GRAPHICS${hr 2}${font sans-serif:normal:size=8:}
+${color grey}GPU load: $color$alignr${execi 1 aticonfig --adapter=0 --od-getclocks | tail -n1 | gawk '{printf $4}'}
+
