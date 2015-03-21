@@ -1,6 +1,7 @@
 [submodule "git-achievements"]
 	path = git-achievements
 	url = https://github.com/panicnot42/git-achievements.git
-[submodule "cedet"]
+
+[submodule ".emacs.d/cedet"]
 	path = .emacs.d/cedet
 	url = http://git.code.sf.net/p/cedet/git
