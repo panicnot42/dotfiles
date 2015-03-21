@@ -24,24 +24,20 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
+(setq package-list '(company
+                     company-irony
+                     helm
+                     irony
+                     projectile))
 (package-initialize)
-(defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, install if it's not.
-Return a list of installed packages or nil for every package not installed."
-  (mapcar
-   (lambda (package)
-     (if (package-installed-p package)
-         package
-       (package-install package)))
-   packages))
-(ensure-package-installed 'company
-                          'company-irony
-                          'helm
-                          'irony
-                          'projectile)
+(unless package-archive-contents
+  (package-refresh-contents))
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; Load CEDET
-(load-file "~/.emacs.d/cedet-bzr/trunk/cedet-devel-load.el")
+;;(load-file "~/.emacs.d/cedet-bzr/trunk/cedet-devel-load.el")
 
 ;; Setup Semantic
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -56,8 +52,8 @@ Return a list of installed packages or nil for every package not installed."
 (add-to-list 'semantic-default-submodes 'global-semantic-show-unmatched-syntax-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-show-parser-state-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-edits-mode)
-(require 'semantic/ia)
-(require 'semantic/bovine/clang)
+;;(require 'semantic/ia)
+;;(require 'semantic/bovine/clang)
 (semantic-mode 1)
 (defun semantic-hook ()
   (imenu-add-to-menubar "TAGS")) ;; imenu integration; not sure if needed
