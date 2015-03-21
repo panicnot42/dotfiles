@@ -37,7 +37,7 @@
     (package-install package)))
 
 ;; Load CEDET
-;;(load-file "~/.emacs.d/cedet-bzr/trunk/cedet-devel-load.el")
+(load-file "~/.emacs.d/cedet/cedet-devel-load.el")
 
 ;; Setup Semantic
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -52,8 +52,8 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-show-unmatched-syntax-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-show-parser-state-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-edits-mode)
-;;(require 'semantic/ia)
-;;(require 'semantic/bovine/clang)
+(require 'semantic/ia)
+(require 'semantic/bovine/clang)
 (semantic-mode 1)
 (defun semantic-hook ()
   (imenu-add-to-menubar "TAGS")) ;; imenu integration; not sure if needed

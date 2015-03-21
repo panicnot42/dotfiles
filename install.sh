@@ -1,5 +1,8 @@
 #!/bin/bash
-curl -L http://sourceforge.net/projects/cedet/files/cedet/cedet-1.1.tar.gz/download -o cedet-1.1.tar.gz
+git submodule update
+
+make -C dotfiles/.emacs.d/cedet clean-all
+make -C dotfiles/.emacs.d/cedet
 
 ln -sT dotfiles/.emacs .emacs
 ln -T dotfiles/.zshrc .zshrc
